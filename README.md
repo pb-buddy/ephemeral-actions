@@ -6,22 +6,23 @@ Based on [here](https://testdriven.io/blog/github-actions-docker/).
 
 ## Steps:
 
-1. Ensure you have an Organization on Github.
-2. Create a Personal Access Token with repo, workflow, admin:org privileges. 
-3. Clone the repo, add your Personal Access Token to a .env file with form ACCESS_TOKEN=YOUR_TOKEN_HERE
-4. Build the Docker image locally:
+- Ensure you have an Organization on Github.
+- Install Docker on your Raspberry Pi using [the convenience script](https://docs.docker.com/engine/install/debian/#install-using-the-convenience-script).
+- Create a Personal Access Token with `repo`, `workflow`, `admin:org` privileges. 
+- Clone the repo, add your Personal Access Token to a .env file with form ACCESS_TOKEN=YOUR_TOKEN_HERE
+- Build the Docker image locally:
 
 ```console
 $ docker build --tag runner-image .
 ```
 
-4. Add your ACCESS_TOKEN to the environment with:
+- Add your ACCESS_TOKEN to the environment with:
 
 ```console
 $ export $(cat .env | xargs)
 ```
 
-5. Run the actions-runner within the container with:
+- Run the actions-runner within the container with:
 
 ```console
 $ docker run \
@@ -32,7 +33,7 @@ $ docker run \
   runner-image
 ```
 
-6. Check it's running with:
+- Check it's running with:
 
 ```
 $ docker logs runner -f
